@@ -1,0 +1,37 @@
+.burger-menu {
+  transition: 0.25s;
+  left: -100%;
+  bottom: 0;
+  height: calc(100vh - 100px);
+  width: 100vw;
+  position: absolute;
+  flex-direction: column;
+  z-index: 1;
+  margin-left: 44px;
+  display: none;
+
+  &--active {
+    left: 0;
+  }
+
+  &__link {
+    height: 44px;
+    font-size: 40px;
+    width: max-content;
+
+    &:first-child {
+      margin-top: 112px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 56px;
+    }
+  }
+}
+
+@media screen and (max-width: 1225px) {
+    .burger-menu{
+      display: flex;
+    }
+}
+

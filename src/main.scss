@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap');
+@import "./mixins/mixins.scss";
 
 * {
   margin: 0;
@@ -20,10 +21,27 @@ html {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: var(--black);
 }
 
 body {
-  overflow: scroll;
+  width: 100%;
+  height: 100%;
+  overflow: hidden scroll;
+  @include font(14px, 100%, 300);
+
+  &::-webkit-scrollbar {
+    position: relative;
+    width: 5px;
+    height: 2px;
+    background-color: #000;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--pink);
+    border-radius: 10px;
+    height: 1%;
+  }
 }
 
 ol, ul {
@@ -40,6 +58,11 @@ q:before, q:after {
   content: none;
 }
 
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -47,5 +70,20 @@ table {
 
 .container {
   margin: 0 auto;
-  max-width: 1225px;
+  width: auto;
+  max-width: 1305px;
+  padding: 0 40px;
+}
+
+@include tablet {
+  .container {
+    margin: 0;
+    padding: 0 44px;
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+@include phone {
+
 }

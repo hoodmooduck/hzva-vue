@@ -1,0 +1,26 @@
+
+@mixin tablet {
+  @media screen and (max-width: 1225px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media screen and (max-width: 730px) {
+    @content;
+  }
+}
+
+@mixin font($size, $lineHeight, $weight) {
+  font-size: $size;
+  line-height: $lineHeight;
+  font-weight: $weight;
+}
+
+@mixin fontAdaptive($size, $lineHeight, $weight: null) {
+  font-size: $size;
+  line-height: $lineHeight;
+  @if ($weight) {
+    font-weight: $weight;
+  }
+}
