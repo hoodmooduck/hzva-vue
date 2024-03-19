@@ -1,0 +1,11 @@
+@import "../mixins/mixins";
+
+.title {
+    font-size: 80px;
+}
+
+@include tablet {
+  .title {
+    font-size: 40px;
+  }
+}
