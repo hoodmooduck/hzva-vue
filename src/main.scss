@@ -76,6 +76,10 @@ table {
   padding: 0 40px;
 }
 
+.pink-text {
+  color: var(--pink);
+}
+
 @include tablet {
   .container {
     margin: 0;
