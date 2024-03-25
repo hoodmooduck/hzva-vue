@@ -9,4 +9,5 @@
   <Header />
   <Banner />
   <Swiper />
+  <Banner />
 </template>

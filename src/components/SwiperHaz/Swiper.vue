@@ -44,6 +44,7 @@ export default {
     const slider = new Swiper(swiper, {
       slidesPerView: "auto",
       direction: 'vertical',
+      speed: 1000,
       mousewheel: {
         sensitivity: 1,
       },
@@ -58,12 +59,12 @@ export default {
       if (swiperRect.top <= 101) {
         if(e.deltaY > 0) {
           ++this.scrollTop
-          if(this.scrollTop < 6) return
+          if(this.scrollTop < 5) return
           this.scrollTop = 0
           slider.slideNext()
         } else{
           ++this.scrollBottom
-          if(this.scrollBottom < 6) return
+          if(this.scrollBottom < 4) return
           this.scrollBottom = 0
           slider.slidePrev()
         }

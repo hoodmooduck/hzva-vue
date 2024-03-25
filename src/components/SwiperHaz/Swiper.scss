@@ -15,7 +15,14 @@
 
   .swiper-wrapper {
     top: 0;
-    position: sticky;
+  }
+
+  .swiper-slide-active {
+    .swiper-card {
+      &__image {
+        opacity: 1;
+      }
+    }
   }
   
   &__title {
