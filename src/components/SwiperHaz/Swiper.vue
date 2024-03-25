@@ -9,7 +9,7 @@ import SwiperCard from "@/components/SwiperHaz/SwiperCard/SwiperCard.vue";
       <div class="swiper-haz__title title">Каждый из ребят очень <span class="pink-text">уникален</span> и привносит
         свою лепту в Хазяев
       </div>
-      <div ref="compose" :style="'height:'+ phantomHeights +'px'" class="swiper-haz__compose">
+      <div ref="compose" class="swiper-haz__compose">
         <div class="swiper-haz__wrapper">
           <div ref="swiper" class="swiper-wrapper">
             <div :key="data.id" v-for="data in cards" class="swiper-slide">
@@ -18,6 +18,7 @@ import SwiperCard from "@/components/SwiperHaz/SwiperCard/SwiperCard.vue";
           </div>
         </div>
       </div>
+      <div :style="'min-height:'+ phantomHeights +'px'" class="phantom"></div>
     </div>
   </div>
 </template>
@@ -34,12 +35,12 @@ export default {
       cards: listPersons,
       phantomHeights: 0,
       scrollTop: 0,
-      scrollBottom: 0,
-      scrollStop: false
+      scrolling: false,
+      count_top: 0,
     }
   },
   mounted() {
-    this.phantomHeights = this.$refs.swiper.offsetHeight * 2
+    this.phantomHeights = this.$refs.swiper.offsetHeight
     if (window.innerWidth <= 1224) return
     const swiper = document.querySelector('.swiper-haz__wrapper')
     const slider = new Swiper(swiper, {
@@ -55,22 +56,11 @@ export default {
         draggable: true
       }
     })
-    window.addEventListener('wheel', (e) => {
+    document.addEventListener('scroll', (e) => {
       const swiperRect = this.$refs.swiper.getBoundingClientRect();
-      if (swiperRect.top <= 101 && swiperRect.bottom >= 600) {
-        if(e.deltaY > 0) {
-          ++this.scrollTop
-          if(this.scrollTop < 5) return
-          this.scrollTop = 0
-          slider.slideNext()
-        } else{
-          ++this.scrollBottom
-          if(this.scrollBottom < 4) return
-          this.scrollBottom = 0
-          slider.slidePrev()
-        }
-      } else {
-      }
+      this.scrollTop = document.documentElement.scrollTop;
+      this.scrolling = document.documentElement.scrollTop > this.scrollTop;
+
     })
   }
 }

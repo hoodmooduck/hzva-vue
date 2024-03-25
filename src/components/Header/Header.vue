@@ -41,6 +41,6 @@
           modalState: modal
         },
       }
-    }
+    },
   }
 </script>
