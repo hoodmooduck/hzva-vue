@@ -1,6 +1,6 @@
 <script setup>
-import './Banner.scss'
-import Back from './Back/Back.vue'
+  import './Banner.scss'
+  import Back from './Back/Back.vue'
 </script>
 
 <template>
