@@ -34,7 +34,8 @@ export default {
       cards: listPersons,
       phantomHeights: 0,
       scrollTop: 0,
-      scrollBottom: 0
+      scrollBottom: 0,
+      scrollStop: false
     }
   },
   mounted() {
@@ -44,7 +45,7 @@ export default {
     const slider = new Swiper(swiper, {
       slidesPerView: "auto",
       direction: 'vertical',
-      speed: 1000,
+      speed: 1500,
       mousewheel: {
         sensitivity: 1,
       },
@@ -56,7 +57,7 @@ export default {
     })
     window.addEventListener('wheel', (e) => {
       const swiperRect = this.$refs.swiper.getBoundingClientRect();
-      if (swiperRect.top <= 101) {
+      if (swiperRect.top <= 101 && swiperRect.bottom >= 600) {
         if(e.deltaY > 0) {
           ++this.scrollTop
           if(this.scrollTop < 5) return
