@@ -9,7 +9,7 @@ import SwiperCard from "@/components/SwiperHaz/SwiperCard/SwiperCard.vue";
       <div class="swiper-haz__title title">Каждый из ребят очень <span class="pink-text">уникален</span> и привносит
         свою лепту в Хазяев
       </div>
-      <div ref="compose" class="swiper-haz__compose">
+      <div :style="'height:'+ phantomHeights +'px'" ref="compose" class="swiper-haz__compose">
         <div class="swiper-haz__wrapper">
           <div ref="swiper" class="swiper-wrapper">
             <div :key="data.id" v-for="data in cards" class="swiper-slide">
@@ -18,7 +18,6 @@ import SwiperCard from "@/components/SwiperHaz/SwiperCard/SwiperCard.vue";
           </div>
         </div>
       </div>
-      <div :style="'min-height:'+ phantomHeights +'px'" class="phantom"></div>
     </div>
   </div>
 </template>
@@ -40,7 +39,7 @@ export default {
     }
   },
   mounted() {
-    this.phantomHeights = this.$refs.swiper.offsetHeight
+
     if (window.innerWidth <= 1224) return
     const swiper = document.querySelector('.swiper-haz__wrapper')
     const slider = new Swiper(swiper, {
@@ -56,11 +55,13 @@ export default {
         draggable: true
       }
     })
+    this.phantomHeights = slider.slides.length * 700;
+    if (window.innerWidth === 1024) return
     document.addEventListener('scroll', (e) => {
+      console.log(123)
       const swiperRect = this.$refs.swiper.getBoundingClientRect();
-      this.scrollTop = document.documentElement.scrollTop;
-      this.scrolling = document.documentElement.scrollTop > this.scrollTop;
-
+      if (swiperRect.top === 166) {
+      }
     })
   }
 }

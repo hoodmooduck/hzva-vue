@@ -76,14 +76,6 @@ const pictures = [
         top: 456,
         left: 1704,
     },
-    {
-        id: 11,
-        img: 'fb_24',
-        width: 184,
-        top: 456,
-        left: 3000,
-    },
-
 
 ]
 
