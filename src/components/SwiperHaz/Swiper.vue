@@ -34,8 +34,8 @@ export default {
       cards: listPersons,
       phantomHeights: 0,
       scrollTop: 0,
-      scrolling: false,
       count_top: 0,
+      activeSlide: 0,
     }
   },
   mounted() {
@@ -55,13 +55,15 @@ export default {
         draggable: true
       }
     })
-    this.phantomHeights = slider.slides.length * 700;
+    this.phantomHeights = slider.slides.length * 701 + 400;
+    this.scrollTop = this.$refs.swiper.getBoundingClientRect().top - 200;
+
     if (window.innerWidth === 1024) return
     document.addEventListener('scroll', (e) => {
-      console.log(123)
-      const swiperRect = this.$refs.swiper.getBoundingClientRect();
-      if (swiperRect.top === 166) {
-      }
+        let index = Math.round((document.documentElement.scrollTop - this.scrollTop) / 700);
+        if(index === this.activeSlide) return
+        this.activeSlide = index
+        slider.slideTo(this.activeSlide)
     })
   }
 }
