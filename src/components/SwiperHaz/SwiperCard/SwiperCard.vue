@@ -17,7 +17,7 @@
       </div>
     </div>
     <picture class="swiper-card__image">
-      <img :src="'/src/assets/images/Swiper/'+ card.avatarImg +'.webp'" :alt="card.avatarImg">
+      <img :src="'/assets/images/Swiper/'+ card.avatarImg +'.webp'" :alt="card.avatarImg">
     </picture>
   </div>
 </template>

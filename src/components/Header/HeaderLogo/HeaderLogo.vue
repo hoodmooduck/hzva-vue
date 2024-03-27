@@ -17,7 +17,7 @@
       </svg>
     </div>
     <picture class="header__image">
-      <img src="@/assets/images/logo.png" alt="logo">
+      <img src="/assets/images/logo.png" alt="logo">
     </picture>
   </div>
 </template>

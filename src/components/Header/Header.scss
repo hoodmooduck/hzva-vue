@@ -5,7 +5,8 @@
   max-width: 1920px;
   padding: 26px 0;
   z-index: 10;
-  background: rgba(0, 0, 0);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
   position: fixed;
 
   &__wrapper {

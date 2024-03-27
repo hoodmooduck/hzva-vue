@@ -1,5 +1,6 @@
 .swiper-haz {
   position: relative;
+  margin-bottom: 300px;
 
   &__compose {
     width: 100%;
@@ -32,4 +33,26 @@
     margin-bottom: 96px;
   }
 }
+
+@media screen and (max-width: 1225px) {
+  .swiper-haz {
+    &__wrapper {
+      max-height: max-content;
+    }
+
+    .swiper-slide{
+      max-width: max-content;
+      user-select: none;
+
+      &:not(:last-child) {
+        margin-right: 24px;
+      }
+    }
+
+    .swiper-wrapper {
+      display: flex;
+    }
+  }
+}
+
 

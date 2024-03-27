@@ -1,7 +1,51 @@
-.banner__image-collection{
+.banner__image-collection {
   position: relative;
 
-  img{
+  img {
     position: absolute;
   }
+
+
+  .swiper-wrapper {
+    display: none;
+  }
+
+  .image__hidden {
+    display: none;
+  }
 }
+
+@media screen and (max-width: 1225px) {
+  .banner__image-collection {
+    position: relative;
+    height: calc(100% - 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .banner__image-wrapper {
+      overflow: hidden;
+    }
+
+    .swiper-wrapper {
+      transition-timing-function: linear;
+      display: flex;
+      width: max-content;
+    }
+
+    .swiper-slide {
+      width: max-content;
+    }
+
+    .image__hidden {
+      display: block;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+      position: static;
+    }
+  }
+}
+

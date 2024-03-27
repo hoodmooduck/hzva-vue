@@ -6,7 +6,7 @@ import SwiperCard from "@/components/SwiperHaz/SwiperCard/SwiperCard.vue";
 <template>
   <div class="swiper-haz">
     <div class="container">
-      <div class="swiper-haz__title title">Каждый из ребят очень <span class="pink-text">уникален</span> и привносит
+      <div class="swiper-haz__title title wow fadeInUp" data-wow-duration="1s">Каждый из ребят очень <span class="pink-text">уникален</span> и привносит
         свою лепту в Хазяев
       </div>
       <div :style="'height:'+ phantomHeights +'px'" ref="compose" class="swiper-haz__compose">
@@ -39,28 +39,30 @@ export default {
     }
   },
   mounted() {
-
-    if (window.innerWidth <= 1224) return
+    document.documentElement.scrollTo(0,0)
     const swiper = document.querySelector('.swiper-haz__wrapper')
     const slider = new Swiper(swiper, {
       slidesPerView: "auto",
-      direction: 'vertical',
+      direction: window.innerWidth <= 1224 ? "horizontal" : "vertical",
       speed: 1500,
+      resizeObserver: true,
       mousewheel: {
         sensitivity: 1,
       },
-      allowTouchMove: false,
-      modules: [Scrollbar],
-      scrollbar: {
-        draggable: true
-      }
+      allowTouchMove: window.innerWidth <= 1224,
     })
-    this.phantomHeights = slider.slides.length * 701 + 400;
-    this.scrollTop = this.$refs.swiper.getBoundingClientRect().top - 200;
+    this.phantomHeights = slider.slides.length * 701 + 350
+    ;
+    this.scrollTop = this.$refs.swiper.getBoundingClientRect().top;
 
-    if (window.innerWidth === 1024) return
+    if (window.innerWidth <= 1224) {
+      this.phantomHeights = 'auto'
+      return
+    }
     document.addEventListener('scroll', (e) => {
-        let index = Math.round((document.documentElement.scrollTop - this.scrollTop) / 700);
+      console.log(window.innerWidth)
+        const top = this.$refs.swiper.getBoundingClientRect().top
+        let index = Math.round((document.documentElement.scrollTop - this.scrollTop - 350) / 700);
         if(index === this.activeSlide) return
         this.activeSlide = index
         slider.slideTo(this.activeSlide)
